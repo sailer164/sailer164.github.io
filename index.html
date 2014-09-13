@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sailer&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="士不可以不弘毅 任重而道远">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sailer's blog">
+<meta property="og:url" content="http://benbenxing.com/">
+<meta property="og:site_name" content="Sailer's blog">
+<meta property="og:description" content="士不可以不弘毅 任重而道远">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sailer's blog">
+<meta name="twitter:description" content="士不可以不弘毅 任重而道远">
+
+  
+    <link rel="alternative" href="/atom.xml" title="Sailer&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+  
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Sailer&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">士不可以不弘毅 任重而道远</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="submit" value="&#xF002;" class="search-form-submit"><input type="hidden" name="q" value="site:http://benbenxing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Java-Restful" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/09/13/Java-Restful/" class="article-date">
+  <time datetime="2014-09-13T01:19:57.000Z" itemprop="datePublished">9月 13 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/13/Java-Restful/">Java 服务端技术选型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>移动互联网的出现导致之前的web mvc模式发生了变化<br>1、很多的移动app不需要服务端的页面，仅仅需要能够提供http数据请求的服务<br>2、需要快速搭建的架构，之前的由tomcat 加载web.xml等一系列配置已显得繁冗复杂</p>
+<p>这就需要一个具有以下几个特点的web架构：<br>1、纯后台的，不需要任何页面<br>2、简单，尽量不涉及复杂的web配置，如之前的web.xml<br>3、支持高并发<br>4、易上手，易推广</p>
+<p>这种架构毫无疑问的就想到了restful，代表性状态传输（Representational State Transfer，REST）在 Web 领域已经得到了广泛的接受，是基于 SOAP 和 Web 服务描述语言（Web Services Description Language，WSDL）的 Web 服务的更为简单的替代方法。 接口设计方面这一转变的关键证据是主流 Web 2.0 服务提供者（包括 Yahoo、Google 和 Facebook）对 REST 的采用，这些提供者弃用或放弃了基于 SOAP 和 WSDL 的接口，而采用了更易于使用、面向资源的模型来公开其服务，并且已经纳入到JDK1.6当中了</p>
+<p>restful几个特点：<br>1、REST 要求开发人员显式地使用 HTTP 方法，并且使用方式与协议定义一致。 这个基本 REST 设计原则建立了创建、读取、更新和删除（create, read, update, and delete，CRUD）操作与 HTTP 方法之间的一对一映射。 根据此映射：<br>若要在服务器上创建资源，应该使用 POST 方法。<br>若要检索某个资源，应该使用 GET 方法。<br>若要更改资源状态或对其进行更新，应该使用 PUT 方法。<br>若要删除某个资源，应该使用 DELETE 方法。</p>
+<p>2、REST Web 服务需要扩展以满足日益提高的性能要求。 具有负载平衡和故障转移功能、代理和网关的服务器集群通常以形成服务拓扑的方式进行组织，从而允许根据需要将请求从一个服务器路由到另一个服务器，以减少 Web 服务调用的总体响应时间。 要使用中间服务器扩大规模，REST Web 服务需要发送完整、独立的请求；也就是说，发送的请求包括所有需要满足的数据，以便中间服务器中的组件能够进行转发、路由和负载平衡，而不需要在请求之间在本地保存任何状态。<br>3、REST Web 服务 URI 的直观性应该达到很容易猜测的程度。 将 URI 看作是自身配备文档说明的接口，开发人员只需很少（如果有的话）的解释或参考资料即可了解它指向什么，并获得相关的资源。 为此，URI 的结构应该简单、可预测且易于理解。<br>4、传输数据的形式可以为xml格式也可以是json格式</p>
+<p>确定好rest作为后台入口后，紧接着就是rest技术选型，看了spring和cxf的样例代码都比较简单，cxf更接近原生态，有PATH、GET等JAX-RS的注解，客户端需自己封装下HTTPCLIENT的返回数据类型，而spring已经提供了更为封装的RestController注解，并且客户端已经封装在RestTemplate类中，再者spring rest与spring框架天然的结合优势最终确定了spring的rest实现，spring rest 的maven配置为<br>        <dependency><br>            <groupid>org.springframework</groupid><br>            <artifactid>spring-web</artifactid><br>            <version>${springframework.version}</version><br>        </dependency></p>
+<p>确定好rest实现技术后就要确定web容器，选用tomcat还是jetty，spring boot starter默认集成的是嵌入式的tomcat，看了下二者的区别：<br>1、jetty 架构更为简单<br>2、 jetty对新的规范如google提出的新型网络协议SPDY支持较为快速<br>3、 jetty体积小，更容易部署<br>4、 jetty易扩展，源于其handler的架构设计</p>
+<p>二者的性能差异其实并不大，由于后续主要面临的是移动互联网应用，考虑其部署和易扩展还是选定了jetty，在查阅资料的同时发现google也是选用的jetty，maven配置如下：</p>
+<pre><code>    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.1.3.RELEASE<span class="tag">&lt;/<span class="title">version</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.1.3.RELEASE<span class="tag">&lt;/<span class="title">version</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">exclusions</span>&gt;</span>
+            <span class="tag">&lt;<span class="title">exclusion</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+                <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+            <span class="tag">&lt;/<span class="title">exclusion</span>&gt;</span>
+        <span class="tag">&lt;/<span class="title">exclusions</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">dependency</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="title">groupId</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">artifactId</span>&gt;</span>spring-boot-starter-jetty<span class="tag">&lt;/<span class="title">artifactId</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">version</span>&gt;</span>1.1.3.RELEASE<span class="tag">&lt;/<span class="title">version</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">dependency</span>&gt;</span>
+</code></pre><p>数据库毫无疑问选用了mysql，dao这块就选用了简单的mybatis，连接池选用了号称最快的druid（阿里开源的），整个web的后台架构就这么基本确定了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://benbenxing.com/2014/09/13/Java-Restful/" data-id="jh7minm330zgur1k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/09">September 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2014/09/13/Java-Restful/">Java 服务端技术选型</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2014 Sailer<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
